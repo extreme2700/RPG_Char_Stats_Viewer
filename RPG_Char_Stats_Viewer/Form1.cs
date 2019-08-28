@@ -74,13 +74,22 @@ namespace RPG_Char_Stats_Viewer
             displayCurrentCharacterSheet();
         }
 
+        // Add a new character sheed to the end of playerList list
         private void addSheetButton_Click(object sender, EventArgs e)
         {
+            currentSheet = playerList.Count;
+            playerList.Add(new CharacterSheet());          
             displayCurrentCharacterSheet();
         }
 
         private void previousButton_Click(object sender, EventArgs e)
         {
+            if (currentSheet == 0)
+            {
+                // if currentSheet value reaches 0 (user hits Previous button too many times) then value is changed to the count value which would be the last sheet entered
+                currentSheet = playerList.Count;
+            }
+            --currentSheet;
             displayCurrentCharacterSheet();
         }
 
@@ -96,12 +105,19 @@ namespace RPG_Char_Stats_Viewer
 
         public void displayCurrentCharacterSheet()
         {
-            currentNameTextBox.Text = playerList[currentSheet].name;
-            currentRaceTextBox.Text = playerList[currentSheet].race;
-            currentLevelTextBox.Text = playerList[currentSheet].level.ToString();  // level is integer so needs to be converted to string
-            displayInfoLabel.Text =
-                "Sheet " + (currentSheet + 1).ToString() + " of " + playerList.Count;   // Changing text in label to display the current and total sheets
-            clearForm();
+            if (currentSheet >= 0 && currentSheet < playerList.Count)
+            {
+                currentNameTextBox.Text = playerList[currentSheet].name;
+                currentRaceTextBox.Text = playerList[currentSheet].race;
+                currentLevelTextBox.Text = playerList[currentSheet].level.ToString();  // level is integer so needs to be converted to string
+                displayInfoLabel.Text =
+                    "Sheet " + (currentSheet + 1).ToString() + " of " + playerList.Count;   // Changing text in label to display the current and total sheets
+                clearForm();
+            }
+            else
+            {
+                MessageBox.Show("Current Sheet: " + currentSheet.ToString());
+            }
         }
 
         private void clearForm()
