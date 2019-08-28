@@ -101,6 +101,16 @@ namespace RPG_Char_Stats_Viewer
 
         private void deleteSheetButton_Click(object sender, EventArgs e)
         {
+            // only allow deletion if there's more than one playerSheet
+            if (playerList.Count > 1 && currentSheet != 0)
+            {
+                playerList.RemoveAt(currentSheet);
+                currentSheet--;
+            }
+            else if (playerList.Count > 1 && currentSheet == 0)
+            {
+                playerList.RemoveAt(currentSheet);
+            }
             displayCurrentCharacterSheet();
         }
 
