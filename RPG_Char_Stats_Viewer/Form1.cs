@@ -95,6 +95,7 @@ namespace RPG_Char_Stats_Viewer
 
         private void nextButton_Click(object sender, EventArgs e)
         {
+            currentSheet = (currentSheet + 1) % playerList.Count;   // if user tries to go beyond number of sheets it goes to first sheet
             displayCurrentCharacterSheet();
         }
 
