@@ -74,9 +74,9 @@ namespace RPG_Char_Stats_Viewer
             displayCurrentCharacterSheet();
         }
 
-        // Add a new character sheed to the end of playerList list
         private void addSheetButton_Click(object sender, EventArgs e)
         {
+            // Add a new character sheed to the end of playerList list
             currentSheet = playerList.Count;
             playerList.Add(new CharacterSheet());          
             displayCurrentCharacterSheet();
@@ -86,7 +86,8 @@ namespace RPG_Char_Stats_Viewer
         {
             if (currentSheet == 0)
             {
-                // if currentSheet value reaches 0 (user hits Previous button too many times) then value is changed to the count value which would be the last sheet entered
+                // if currentSheet value reaches 0 (user hits Previous button when on first sheet) 
+                // then value is changed to the count value which would be the last sheet entered
                 currentSheet = playerList.Count;
             }
             --currentSheet;
@@ -114,6 +115,11 @@ namespace RPG_Char_Stats_Viewer
             displayCurrentCharacterSheet();
         }
 
+        private void ClearButton_Click(object sender, EventArgs e)
+        {
+            ClearForm();
+        }
+
         public void displayCurrentCharacterSheet()
         {
             if (currentSheet >= 0 && currentSheet < playerList.Count)
@@ -123,7 +129,7 @@ namespace RPG_Char_Stats_Viewer
                 currentLevelTextBox.Text = playerList[currentSheet].level.ToString();  // level is integer so needs to be converted to string
                 displayInfoLabel.Text =
                     "Sheet " + (currentSheet + 1).ToString() + " of " + playerList.Count;   // Changing text in label to display the current and total sheets
-                clearForm();
+                ClearForm();
             }
             else
             {
@@ -131,12 +137,14 @@ namespace RPG_Char_Stats_Viewer
             }
         }
 
-        private void clearForm()
+        private void ClearForm()
         {
             // method is used to clear input text boxes
             updateNameTextBox.Text = "";
             updateRaceTextBox.Text = "";
             updateLevelTextBox.Text = "";
         }
+
+        
     }
 }

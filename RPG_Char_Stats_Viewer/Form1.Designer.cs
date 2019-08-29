@@ -46,6 +46,7 @@
             this.nextButton = new System.Windows.Forms.Button();
             this.addSheetButton = new System.Windows.Forms.Button();
             this.deleteSheetButton = new System.Windows.Forms.Button();
+            this.clearButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // displayInfoLabel
@@ -56,7 +57,6 @@
             this.displayInfoLabel.Size = new System.Drawing.Size(65, 13);
             this.displayInfoLabel.TabIndex = 0;
             this.displayInfoLabel.Text = "Sheet 0 of 0";
-           // this.displayInfoLabel.Click += new System.EventHandler(this.Label1_Click);
             // 
             // label2
             // 
@@ -209,7 +209,16 @@
             this.deleteSheetButton.Text = "Delete Current Sheet";
             this.deleteSheetButton.UseVisualStyleBackColor = true;
             this.deleteSheetButton.Click += new System.EventHandler(this.deleteSheetButton_Click);
-            
+            // 
+            // clearButton
+            // 
+            this.clearButton.Location = new System.Drawing.Point(265, 270);
+            this.clearButton.Name = "clearButton";
+            this.clearButton.Size = new System.Drawing.Size(123, 23);
+            this.clearButton.TabIndex = 5;
+            this.clearButton.Text = "Clear Fields";
+            this.clearButton.UseVisualStyleBackColor = true;
+            this.clearButton.Click += new System.EventHandler(this.ClearButton_Click);
             // 
             // Form1
             // 
@@ -218,6 +227,7 @@
             this.ClientSize = new System.Drawing.Size(404, 365);
             this.Controls.Add(this.deleteSheetButton);
             this.Controls.Add(this.addSheetButton);
+            this.Controls.Add(this.clearButton);
             this.Controls.Add(this.nextButton);
             this.Controls.Add(this.previousButton);
             this.Controls.Add(this.updateButton);
@@ -236,10 +246,9 @@
             this.Controls.Add(this.displayInfoLabel);
             this.Name = "Form1";
             this.Text = "Form1";
-//            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
-            
+
         }
 
         #endregion
@@ -262,6 +271,7 @@
         private System.Windows.Forms.Button nextButton;
         private System.Windows.Forms.Button addSheetButton;
         private System.Windows.Forms.Button deleteSheetButton;
+        private System.Windows.Forms.Button clearButton;
     }
 }
 
